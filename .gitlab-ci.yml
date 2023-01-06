@@ -1,0 +1,21 @@
+image: python:3.9
+
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script:
+    - python -m pytest tests/
+
+build:
+  stage: build
+  script:
+    - python -m compileall .
+
+deploy:
+  stage: deploy
+  script:
+    - python deploy.py
