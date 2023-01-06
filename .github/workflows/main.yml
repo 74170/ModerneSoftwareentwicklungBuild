@@ -22,21 +22,3 @@ jobs:
         run: |
           python tests.py
 
-  build:
-    needs: [test]
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-          architecture: 'x64'
-      - uses: Nuitka/Nuitka-Action@0.4
-        with:
-          script-name: day1.py
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: exe
-          path: build/day1.exe
